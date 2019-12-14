@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="idd_daily_check1" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="eac7f807-b02f-449c-a7c4-d91bf689bd81">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="ListRow" mode="Opaque" backcolor="#FFFEFC">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[Boolean.valueOf($V{REPORT_COUNT}.intValue() %2 == 0)]]></conditionExpression>
+			<style backcolor="#CF0A35"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="checkCDRDataset" uuid="eefad652-b717-4e9d-a5bc-1a486f9142aa">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+		<queryString language="SQL">
+			<![CDATA[select * from product  LIMIT 5, 5]]>
+		</queryString>
+		<field name="ID" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.label" value="ID"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCT"/>
+		</field>
+		<field name="NAME" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="NAME"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCT"/>
+		</field>
+		<field name="COST" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="COST"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCT"/>
+		</field>
+	</subDataset>
+	<subDataset name="checkDataErrorDataset" uuid="a8c83b52-ac73-4ce8-976b-a5c7f96d49f2">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+		<queryString language="SQL">
+			<![CDATA[select * from product  LIMIT 5, 15]]>
+		</queryString>
+		<field name="ID" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.label" value="ID"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCT"/>
+		</field>
+		<field name="NAME" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="NAME"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCT"/>
+		</field>
+		<field name="COST" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="COST"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCT"/>
+		</field>
+	</subDataset>
+	<parameter name="PAuthor" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[select * from product limit 0,1]]>
+	</queryString>
+	<field name="ID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="ID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCT"/>
+	</field>
+	<field name="NAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NAME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCT"/>
+	</field>
+	<field name="COST" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="COST"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCT"/>
+	</field>
+	<title>
+		<band height="89" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="0" width="265" height="48" forecolor="#000000" uuid="cf4799a0-8862-492c-9539-904f69e078d2"/>
+				<textElement verticalAlignment="Middle">
+					<font size="22"/>
+				</textElement>
+				<text><![CDATA[IDD Daily Check Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="0" y="48" width="140" height="22" forecolor="#000000" uuid="a49f9e55-5e6d-4cee-918b-ed362f3141a0"/>
+				<textElement textAlignment="Right">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[-- created by]]></text>
+			</staticText>
+			<image>
+				<reportElement x="265" y="0" width="300" height="70" uuid="223a90c7-c94a-49b1-aba4-ce6fb4bd7694"/>
+				<imageExpression><![CDATA["logo-master.png"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="0" y="70" width="555" height="1" uuid="3309fd07-ac00-44cb-b2c6-322c4e11c660">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="3.0" lineStyle="Solid" lineColor="#666363"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="150" y="48" width="115" height="21" uuid="cc57ee66-68ef-40ae-8390-35117fef7532"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{PAuthor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="100">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<componentElement>
+				<reportElement x="0" y="59" width="555" height="30" uuid="8069de9a-2683-4191-991d-ae96def53d5f"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="checkCDRDataset" uuid="0eb76595-da5a-4744-bb85-d005223fa933">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="30" width="555">
+						<frame>
+							<reportElement x="0" y="0" width="555" height="30" uuid="19f79ad4-cc76-4770-9422-4a99fc83de66"/>
+							<textField pattern="$###,###.00">
+								<reportElement x="380" y="0" width="174" height="30" uuid="a6391297-4a86-46a3-810c-7ccc88bbeabe">
+									<propertyExpression name="net.sf.jasperreports.style.forecolor"><![CDATA[$F{COST}.compareTo(new BigDecimal(10)) > 0 ? "#FF0000" :"#000000"]]></propertyExpression>
+								</reportElement>
+								<textElement>
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{COST}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="170" y="0" width="210" height="30" uuid="81967cd7-c62a-4d9a-b09f-7e22bf572734"/>
+								<textElement>
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="0" width="170" height="30" uuid="28fd7670-1789-415b-964b-86b491e97a02"/>
+								<textElement>
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{ID}]]></textFieldExpression>
+							</textField>
+							<line>
+								<reportElement x="-1" y="29" width="546" height="1" forecolor="#999393" uuid="f6ca3b5f-8e7f-4d22-abb6-6ed207bfe05a"/>
+							</line>
+						</frame>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<staticText>
+				<reportElement style="Column header" x="0" y="36" width="170" height="23" uuid="b585c08f-ec66-4424-82f9-2a4b827c6cb8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0ea6755a-f1df-4964-8cfe-dd6ea2d48f53"/>
+				</reportElement>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="170" y="36" width="210" height="23" uuid="6a483717-b26e-4783-a59d-36fcc72f155e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="339ef560-0beb-4c6e-ac6c-8b974491e02f"/>
+				</reportElement>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Product Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="2" width="190" height="30" uuid="33f793da-db6f-4ddf-aedb-a0a91f9fa055"/>
+				<textElement textAlignment="Left">
+					<font fontName="Calibri" size="22"/>
+				</textElement>
+				<text><![CDATA[  CDR Check Result]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="380" y="36" width="175" height="23" uuid="c00b0bca-b54b-4de4-83a8-b17dd4a2bffe">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="339ef560-0beb-4c6e-ac6c-8b974491e02f"/>
+				</reportElement>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Price]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="2" width="20" height="30" forecolor="#747474" backcolor="#747474" uuid="a192e85f-e69c-489e-8963-9585ef7ce677"/>
+			</rectangle>
+			<line>
+				<reportElement x="0" y="54" width="555" height="1" uuid="0bf9c3eb-6b75-4f16-b354-592b34698367"/>
+			</line>
+		</band>
+		<band height="100">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<rectangle>
+				<reportElement x="0" y="0" width="20" height="30" forecolor="#747474" backcolor="#747474" uuid="70232477-f2ca-4ea3-9779-941cf27b5e39"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="20" y="0" width="260" height="30" uuid="33bb0ae3-3646-4957-94c1-8f01a6e531a7"/>
+				<textElement textAlignment="Left">
+					<font fontName="Calibri" size="22"/>
+				</textElement>
+				<text><![CDATA[  Load Error Check Result]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="40" width="170" height="23" uuid="9057e2ce-fc85-4562-a0fe-c2373a5e3d99">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0ea6755a-f1df-4964-8cfe-dd6ea2d48f53"/>
+				</reportElement>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="170" y="40" width="210" height="23" uuid="b2bb57c8-306e-4ebe-8794-8ce8744ff23a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="339ef560-0beb-4c6e-ac6c-8b974491e02f"/>
+				</reportElement>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Product Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="380" y="40" width="175" height="23" uuid="58de5178-9ad4-4039-8e12-2cbcd435672b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="339ef560-0beb-4c6e-ac6c-8b974491e02f"/>
+				</reportElement>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Price]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="0" y="60" width="555" height="30" uuid="9cd3516b-1f36-44a0-a43b-da129ab669d2"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="checkDataErrorDataset" uuid="83d0a6ea-b2bf-47d5-a8ee-672e4de444f6">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="30" width="555">
+						<frame>
+							<reportElement x="0" y="0" width="555" height="30" uuid="d7a7bc00-1375-4b23-84f9-20a3599d9a33"/>
+							<textField pattern="$###,###.00">
+								<reportElement x="380" y="0" width="174" height="30" uuid="76977ccd-4b63-423c-8031-4d7cfa918ca2">
+									<propertyExpression name="net.sf.jasperreports.style.forecolor"><![CDATA[$F{COST}.compareTo(new BigDecimal(10)) > 0 ? "#FF0000" :"#000000"]]></propertyExpression>
+								</reportElement>
+								<textElement>
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{COST}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="170" y="0" width="210" height="30" uuid="fe92dc94-1c70-44db-9ce2-15e069fa20fc"/>
+								<textElement>
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="0" width="170" height="30" uuid="525e1a25-c521-4066-8bbd-fba8c0492e1c"/>
+								<textElement>
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{ID}]]></textFieldExpression>
+							</textField>
+							<line>
+								<reportElement x="-1" y="29" width="546" height="1" forecolor="#999393" uuid="4bb6fdb6-7ea6-479e-ba8e-a9af64a5dbc7"/>
+							</line>
+						</frame>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+		<band height="100">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<rectangle>
+				<reportElement x="0" y="0" width="20" height="30" forecolor="#747474" backcolor="#747474" uuid="0f5dc20d-f119-477a-97fc-5d5571d7828e"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="20" y="0" width="260" height="30" uuid="046468d3-8caf-45a5-80b4-1d0cbff168d7"/>
+				<textElement textAlignment="Left">
+					<font fontName="Calibri" size="22"/>
+				</textElement>
+				<text><![CDATA[  Sequence Check]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="40" width="170" height="23" uuid="279d01ba-b855-499d-ae98-d49d4c122e5c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0ea6755a-f1df-4964-8cfe-dd6ea2d48f53"/>
+				</reportElement>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="170" y="40" width="210" height="23" uuid="a4d62b44-2e5c-4973-b31b-ed0cd294690a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="339ef560-0beb-4c6e-ac6c-8b974491e02f"/>
+				</reportElement>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Product Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="380" y="40" width="175" height="23" uuid="93962f15-cd0a-4fa5-b3ca-54d93fa52bc8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="339ef560-0beb-4c6e-ac6c-8b974491e02f"/>
+				</reportElement>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Price]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="0" y="60" width="555" height="30" uuid="8c151213-711e-4ba3-a230-1f7d29997a57"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="checkDataErrorDataset" uuid="c5a15298-938e-4225-a92d-44dd4e8c29ed">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="30" width="555">
+						<frame>
+							<reportElement x="0" y="0" width="555" height="30" uuid="be039dbb-5daf-443d-90cf-e7c04fac29a8"/>
+							<textField pattern="$###,###.00">
+								<reportElement x="380" y="0" width="174" height="30" uuid="92554bf9-40ad-480e-9ec8-344f1625750d">
+									<propertyExpression name="net.sf.jasperreports.style.forecolor"><![CDATA[$F{COST}.compareTo(new BigDecimal(10)) > 0 ? "#FF0000" :"#000000"]]></propertyExpression>
+								</reportElement>
+								<textElement>
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{COST}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="170" y="0" width="210" height="30" uuid="54326edb-ec5b-49cc-b2da-09b45726431b"/>
+								<textElement>
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="0" width="170" height="30" uuid="ef55b0c4-5e32-4dbd-b53f-bc01854da8fd"/>
+								<textElement>
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{ID}]]></textFieldExpression>
+							</textField>
+							<line>
+								<reportElement x="-1" y="29" width="546" height="1" forecolor="#999393" uuid="3fdb153a-a7bf-435a-93b4-95d26d683862"/>
+							</line>
+						</frame>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>
